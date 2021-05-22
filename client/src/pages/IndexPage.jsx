@@ -10,6 +10,10 @@ import './IndexPage.css'
 const IndexPage = (props) => {
 
   const handleLoginClick = userType => {
+    const { history: { location: { pathname, search } } } = props;
+    if (search) {
+      localStorage.setItem('redirectPath', `${pathname}${search}`)
+    }
     props.history.push(`/auth?userType=${userType}`)
   }
 

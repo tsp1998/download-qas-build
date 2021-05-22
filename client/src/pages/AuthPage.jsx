@@ -7,6 +7,9 @@ import Loader from '../components/Loader';
 //apis
 import { loginWithJira } from '../apis/jiraApis'
 
+//utils
+import getQueryParams from '../utils/getQueryParams'
+
 //styles
 import './AuthPage.css'
 
@@ -16,10 +19,11 @@ const AuthPage = (props) => {
 
   useEffect(async () => {
     const { history: { location: { search } } } = props;
-    const userType = search.substring(search.indexOf('='))
+    const queryParams = getQueryParams(search)
     setIsLoading(true)
+
     try {
-      const authToken = await loginWithJira(userType);
+      const authToken = await loginWithJira(queryParams.userType);
       if (authToken) {
         localStorage.setItem('authToken', authToken);
         props.setIsAuthenticated(true)
@@ -27,8 +31,10 @@ const AuthPage = (props) => {
     } catch (error) {
       console.log(`error`, error)
     }
+
     setIsLoading(false)
-    props.history.push('/')
+    const redirectPath = localStorage.getItem('redirectPath') || '/'
+    props.history.push(redirectPath)
   }, [])
 
   return (

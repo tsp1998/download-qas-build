@@ -11,9 +11,9 @@ const buildFilesMap = {
     'client\\',
     'server\\',
     'Object Spy\\',
-    'client\\client.exe',
-    'server\\server.exe',
-    'Object Spy\\cos.zip',
+    'client\\client.msi',
+    'server\\server.msi',
+    'Object Spy\\cos.rar',
   ],
 }
 
