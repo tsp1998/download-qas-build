@@ -1,0 +1,9 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  margin: 5px 20px;
+  padding: 10px 15px;
+  background: rgb(38, 15, 248);
+  color: white;
+  border-radius: 5px;
+}
